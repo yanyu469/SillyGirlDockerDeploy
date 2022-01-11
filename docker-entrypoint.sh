@@ -76,13 +76,13 @@ else
 fi
 
 
-if [ ! -d $CODE_DIR/develop/onebyone/.git ]; then
-  echo "扩展 一对一推送不存在，开始clone代码..."
-  git clone ${GITHUBPROXY}https://github.com/xumf/onebyone $CODE_DIR/develop/onebyone
-else
-  echo "扩展 一对一推送已存在，开始更新代码..."
-  cd $CODE_DIR/develop/onebyone && git reset --hard && git pull
-fi
+# if [ ! -d $CODE_DIR/develop/onebyone/.git ]; then
+#   echo "扩展 一对一推送不存在，开始clone代码..."
+#   git clone ${GITHUBPROXY}https://github.com/xumf/onebyone $CODE_DIR/develop/onebyone
+# else
+#   echo "扩展 一对一推送已存在，开始更新代码..."
+#   cd $CODE_DIR/develop/onebyone && git reset --hard && git pull
+# fi
 
 
 if [ -f $CONF_DIR/dev.go ]; then
@@ -92,12 +92,12 @@ fi
 
 if [ ! -f $CODE_DIR/dev.go ]; then
   echo "dev.go 不存在  添加 dev.go"
-  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/dev.go
+  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/yanyu469/SillyGirlDockerDeploy/main/dev.go
 else
   echo "dev.go 已存在  备份 dev.go"
   cd $CODE_DIR && mv dev.go dev.go.bak
   echo "下载最新 dev.go"
-  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/dev.go
+  cd $CODE_DIR && wget -O dev.go ${GITHUBPROXY}https://raw.githubusercontent.com/yanyu469/SillyGirlDockerDeploy/main/dev.go
 fi
 if [ ! -f $CODE_DIR/dev.go ]; then
   echo "远程获取dev.go失败，从备份恢复"
@@ -106,7 +106,7 @@ fi
 
 if [ ! -f $CONF_DIR/sets.conf ]; then
   echo "sets.conf 不存在，添加sets.conf"
-  cd $CONF_DIR &&  wget -O sets.conf ${GITHUBPROXY}https://raw.githubusercontent.com/LeanFly/SillyGirlDockerDeploy/main/sets.conf
+  cd $CONF_DIR &&  wget -O sets.conf ${GITHUBPROXY}https://raw.githubusercontent.com/yanyu469/SillyGirlDockerDeploy/main/sets.conf
 else
   echo "sets.conf已存在"
 fi
